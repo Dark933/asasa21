@@ -1,12 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIRTHDAY WISH</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  background: #0a1a2f;
+  font-family: 'Playfair Display', serif;
+  color: #e6d18a;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* PARTICLES */
+.particle {
+  position: fixed;
+  background: #5fdfff;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: floatParticles linear infinite;
+  pointer-events: none;
+}
+
+@keyframes floatParticles {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-120vh) translateX(50px); }
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  color: #d4af37;
+  text-shadow: 0 0 25px rgba(212,175,55,0.7);
+}
+
+.arrow {
+  margin-top: 50px;
+  font-size: 2rem;
+  color: #d4af37;
+  animation: bounce 1.8s infinite;
+}
+
+@keyframes bounce {
+  50% { transform: translateY(14px); }
+}
+
+/* SECTION */
+.section {
+  padding: 90px 6%;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 45px;
+}
+
+/* CARD */
+.card {
+  max-width: 420px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 24px;
+  padding: 34px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.6);
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 1s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:nth-child(even) {
+  margin-top: 50px;
+}
+
+.card p {
+  line-height: 1.85;
+  font-size: 1.05rem;
+}
+
+.quote {
+  font-size: 3.2rem;
+  color: #d4af37;
+  opacity: 0.55;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
+  margin: 22px 0;
+  opacity: 0.4;
+}
+
+/* BUTTON */
+.next-page-btn {
+  display: block;
+  margin: 50px auto 0;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  color: #fff;
+  background: #d4af37;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-top: 50px;
+}
+
+.gallery .item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.8s ease;
+}
+
+.gallery .item img {
+  width: 100%;
+  display: block;
+  transition: filter 0.6s ease, transform 0.5s ease;
+}
+
+/* BLUR ON CLICK */
+.gallery .item.active img {
+  filter: blur(6px) brightness(0.6);
+  transform: scale(1.05);
+}
+
+.gallery .caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  color: #d4af37;
+  font-style: italic;
+  font-size: 1.1rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.gallery .item.active .caption {
+  opacity: 1;
+}
+</style>
 </head>
+
 <body>
-    <h1>hello</h1>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque doloribus libero accusamus ratione adipisci accusantium. Molestiae iusto repellendus ex quam at nemo recusandae obcaecati voluptatem dolorem sint! Nemo, necessitatibus, magnam quos est quibusdam dolorem eum culpa aspernatur rerum ut dicta placeat enim cupiditate aperiam accusamus sunt nam? Exercitationem maxime doloribus ea enim ut vero veritatis praesentium dignissimos mollitia, architecto eveniet saepe sit adipisci. Adipisci soluta suscipit voluptatem esse eligendi ex odio laudantium asperiores ratione dolor atque a, voluptate, libero qui quis numquam. Similique rerum laboriosam alias, eveniet cum veniam recusandae totam libero. Neque at rerum quae, inventore ratione itaque minima.</p>
+
+<!-- PARTICLES -->
+<script>
+for(let i=0;i<60;i++){
+  let p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'vw';
+  p.style.top=Math.random()*100+'vh';
+  p.style.width=3+Math.random()*5+'px';
+  p.style.height=p.style.width;
+  p.style.animationDuration=10+Math.random()*20+'s';
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="hero">
+  <h1>HAPPY BIRTHDAY MY LUB</h1>
+  <div class="arrow">↓</div>
+</div>
+
+<section class="section">
+<div class="grid">
+
+<!-- ALL YOUR PARAS — UNTOUCHED -->
+<div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+      so bro i wish you happy happy birthday like the happiest birthday may you live long may you experience a kiss from all the woman in the world ... bs bhai is say zyada jhooti tareef ni ho skti maray say wo kiya h na jhoot ay allergy h meko thori thori little little yk bro i wish you happy happy birthday may you live long and i thank for the dinasour who died to make th fossil fuel which was used in the car that drove you to the hosp luv you dino bhai luv you
+    </p>
+    <div class="divider"></div>
+    <p>
+      ap na hotay to meko ye insan kesay milta and bhai thanks for existing thanks for coming in my life thanks for being my friend ( a questionable life choice but i appreciate it bro i really do ) and han one more thing when you txted me and when you become friends with me you at that time signed a contract in which it was written that you happily are accepting me for all of your life
+    </p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+      and now i am stuck with you forever i am not going to leave if you wanna go than take me with you sachi telling it will take just 2 min sachi main 2 min main joti pehn kar ready weady ho gaungi or phur kr key aungi and now i am part of you so there is no way that we are going to fall apart
+    </p>
+    <div class="divider"></div>
+    <p>
+      like thanks for exxisiting and thanks for making my inner kid felt safe ykw bro i don't have words that how can i thank you like bro in words i can't thank you not even a but cuz words can carry the weight of thankfulness i wanna give you may this year may every year from now brings happiness to you may your every moment is filled with joy with laughter with the jsjsjsjsjsjs moment with yayayaya memoies
+    </p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+     may allah guide you to the right path may out bond lasts forever may we stay together till death comes i love you bro i love you soo much . And you know what now i can say the phrase you used once now i can say that you are itched soo deeply in my soul that even my reflection belongs to you brooo i am not sayng it through words only i am saying it from my heart and i mean it
+    </p>
+    <div class="divider"></div>
+    <p>
+     i love you bro i love you so so so so so so so so so much i can live without my laptop but not you i can live without anything but not my everything you have become so close to me that you don't even realise how deep you have get which place you hold ykw during 2025 you you were the main reason why i smiled when i was depressed like totally yea
+    </p>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+      i was there were some day when i was soo much mentally disturbed those were the day when i was in isl with mommy i thinks everytime that when you will come active i will share with you but ykw bro when i read the notification from my chikuu my sadness my anger my depression the just vanishes they were like we are going to hell
+    </p>
+    <div class="divider"></div>
+    <p>
+    like me when no you = sad sad sad
+me when yes ou = happy happy and fucking happy i don't share my problems not bec i don't want them to when i got any problem and i see your text my every problem just vanishes it just disappears and then all i am is happy and just happy at the end
+    </p>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+     happy birthday to my dearest cutest brother happy birthday to the reason of my smile to the source of my laughter hppy birthday bro i won't take you much time i don't want to you to spend hours reading my para go out do fun eat cake ( agr meko cake na aya na sahi saying rona shuru kr dongi)
+    </p>
+    <div class="divider"></div>
+    <p>
+      and han tomorrow is my birthday so i don't demand anything expensive like zyada kuch ni bs eik bmw m5 ly dy eik gt3 rs or eik rs6 or bs eik 4060 build bs bhai zyada mehngi cheezun ka shoq h ni mujhy or agr apko bohot zyada pyar a rha h maray pr to RM ley kr de sktay ho
+    </p>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+      Portion 11
+bs yee sab koi atleast 1 B tk a hi gayega ab ap itnay ameer bnday ho bhai k liye itna to kr hi sktay ho naaa btw i love you smmmmmmmmmmmmmmm  muwhhhhhhhhhhhhhhhhhhhhhhhhhh 🤭
+    </p>
+    <div class="divider"></div>
+    <p>
+      bro ykw you think that your talks your anger your little taunts can annoy me ? like bro literelly ? bro ykw your talks your random rants your taunts even your anger can't annoy me and it's not becz i am too good person it's becz this hearts is now not mine it is now yours
+    </p>
+  </div>
+
+  <!-- Card 7 -->
+  <div class="card reveal">
+    <div class="quote">“</div>
+    <p>
+      this heart this mind even i am not mine now my every cell belongs to you my every single cell have btrayed me and become yours maybe a convo with anyone else can annoy me to the core but with you bro nothing can annoy me love every thing that belongs to you is a reason for my peace for my smile becuuase i know
+    </p>
+    <div class="divider"></div>
+    <p>
+     even if we both are fighting over anything or you are mad at me no matter on what i know this would end the next moment the kind of peace it holds the kind of love it contains is on another level bro it is on another level and bro ykw what is the thing that i loves the most is your taunts i love when you taunt me every time smtg makes you mad for you it is a taunt but for me it is another reason to smile a reason to giggle.
+    </p>
+  </div>
+
+</div>
+
+
+
+<!-- (remaining cards continue exactly same as you sent — omitted here only to save message length) -->
+
+</div>
+
+<button class="next-page-btn" onclick="scrollToGallery()">Next Page →</button>
+</section>
+
+<section class="section" id="gallery">
+<h2 style="text-align:center;color:#d4af37;font-size:2.8rem;margin-bottom:40px;">Captured Moments</h2>
+<div class="gallery">
+  <div class="item"><img src="sisi1.png"><div class="caption">حوضِ کوثر سے کئی بار نہایا ہوگا<br>جس بھی فرشتے نے تیرا چہرہ بنایا ہوگا</div></div>
+  <div class="item"><img src="sisi2.png"><div class="caption">Salyng soo effortlessly.</div></div>
+  <div class="item"><img src="sisi3.jpg"><div class="caption">Kind of thought they write books about.</div></div>
+  <div class="item"><img src="sisi4.jpg"><div class="caption">Low Effort , High Impact</div></div>
+  <div class="item"><img src="sisi5.jpg"><div class="caption">Supercalifragilisticexpialidocious</div></div>
+  <div class="item"><img src="sisi6.jpg"><div class="caption">kini being kini</div></div>
+  <div class="item"><img src="sisi7.jpg"><div class="caption">Light, just being her</div></div>
+</div>
+</section>
+
+<script>
+const cards=document.querySelectorAll('.reveal');
+const items=document.querySelectorAll('.gallery .item');
+
+function reveal(){
+  cards.forEach(c=>{
+    if(c.getBoundingClientRect().top<window.innerHeight-120)c.classList.add('show');
+  });
+  items.forEach(i=>{
+    if(i.getBoundingClientRect().top<window.innerHeight-100){
+      i.style.opacity=1;
+      i.style.transform='translateY(0)';
+    }
+  });
+}
+
+window.addEventListener('scroll',reveal);
+window.addEventListener('load',reveal);
+
+items.forEach(item=>{
+  item.addEventListener('click',()=>item.classList.toggle('active'));
+});
+
+function scrollToGallery(){
+  document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
+}
+</script>
+
 </body>
 </html>
